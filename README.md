@@ -18,7 +18,7 @@ financial-sentiment-analysis/
 │   └── processed/                 # Processed/cleaned data
 │
 ├── models/                        # Saved models directory
-│   └── finbert_finetuned/         # Fine-tuned FinBERT model
+│   └── finbert_finetuned/         # Fine-tuned FinBERT model 
 │
 ├── notebooks/                     # Jupyter notebooks for exploration
 │   ├── 01_data_exploration.ipynb
@@ -28,12 +28,12 @@ financial-sentiment-analysis/
 │   ├── __init__.py                # Makes src a Python package
 │   ├── data/                      # Data processing scripts
 │   │   ├── __init__.py
-│   │   ├── preprocess.py          # Data preprocessing functions
-│   │   └── fetch_news.py          # News fetching functions
+│   │   ├── preprocess.py          # Data preprocessing functions (DONE)
+│   │   └── fetch_news.py          # News fetching functions (DONE)
 │   │
 │   ├── models/                    # Model-related code
 │   │   ├── __init__.py
-│   │   ├── train.py               # Training functionality
+│   │   ├── train.py               # Training functionality (DONE)
 │   │   └── predict.py             # Prediction functionality
 │   │
 │   ├── visualization/             # Visualization scripts
@@ -43,8 +43,7 @@ financial-sentiment-analysis/
 │   └── app/                       # Web application code
 │       ├── __init__.py
 │       ├── main.py                # Main application entry point
-│       └── templates/             # HTML templates for the web app
-│           └── index.html         # Main page template
+│    
 │
 ├── tests/                         # Unit tests
 │   ├── test_preprocess.py
@@ -52,7 +51,7 @@ financial-sentiment-analysis/
 │
 ├── main.py                        # Main entry point
 ├── requirements.txt               # Project dependencies
-└── README.md                      # Project documentation
+└── README.md                      # Project documentation 
 ```
 
 ## Installation
