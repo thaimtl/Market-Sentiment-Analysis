@@ -51,11 +51,12 @@ def load_and_preprocess_data():
     sentiment_map = {1: 'Positive', 0: 'Neutral', -1: 'Negative'}
     df['sentiment_text'] = df['Sentiment'].map(sentiment_map)
     
-    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "processed")
-    output_path = os.path.join(output_dir, "cleaned_data.csv")
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "preprocessed")
+    output_path = os.path.join(output_dir, "processed_kagggle_dataset_for_training.csv")
     df.to_csv(output_path, index=False)
-    print(f"Cleaned data saved to: {output_path}")
+    print(f"Cleaned and processed data saved to: {output_path}")
     return df
+
 def compare_raw_and_cleaned(df, num_samples=5):
     """Compare raw and cleaned text for a sample of rows"""
     print("\n--- Comparing Raw vs Cleaned Text ---")
@@ -82,9 +83,16 @@ def compare_raw_and_cleaned(df, num_samples=5):
             print(f"Characters removed: {chars_removed}")
     else:
         print("No examples of modified text found.")
+
+
+
+
+
+
+
 if __name__ == "__main__":
     download_nltk_resources()
     df = load_and_preprocess_data()
-    compare_raw_and_cleaned(df)
     print(f"Loaded and preprocessed {len(df)} samples.")
     print(f"Sentiment distribution: {df['Sentiment'].value_counts().to_dict()}")
+    compare_raw_and_cleaned(df)

@@ -97,10 +97,13 @@ def fetch_stock_news_alphavantage(ticker, days=7, api_key='APRTD0XNPCP0J0YC'):
             return news_df
             
         # Clean headlines
-        news_df['Processed_Headline'] = news_df['Headline'].apply(clean_text)
+        news_df['Cleaned_Headline'] = news_df['Headline'].apply(clean_text)
+        
         output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "processed")
-        output_path = os.path.join(output_dir, f"cleaned_data_for_{ticker}__{start_date}_to_{end_date}.csv")
+        output_path = os.path.join(output_dir, f"cleaned_data_for_{ticker}__{start_date.strftime('%Y%m%d')}_to_{end_date.strftime('%Y%m%d')}.csv")
         news_df.to_csv(output_path, index=False)
+        
+        
         print(f"Cleaned data saved to: {output_path}")
         
         print(f"Successfully fetched {len(news_df)} news items for {ticker}")
