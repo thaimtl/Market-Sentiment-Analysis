@@ -72,7 +72,7 @@ class FinancialSentimentTrainer:
         print(f"Using device: {self.device}")
         self.model.to(self.device)
     
-    def prepare_data(self, df, test_size=0.2, max_length=300): #MAX LENGTH IS NUMBER OF TOKENS IN 1 SENTENCE. <= 315
+    def prepare_data(self, df, test_size=0.2, max_length=128): #MAX LENGTH IS NUMBER OF TOKENS IN 1 SENTENCE. <= 315
         """
         Prepare data for training
         
@@ -217,7 +217,7 @@ class FinancialSentimentTrainer:
         
         return train_dataset, val_dataset
     
-    def train(self, train_dataset, val_dataset, batch_size=20, num_epochs=4):
+    def train(self, train_dataset, val_dataset, batch_size=24, num_epochs=4):
         """
         Train the model
         

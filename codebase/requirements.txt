@@ -10,7 +10,8 @@ scikit-learn>=1.2.0
 flask>=2.3.0  # For web app
 pytest>=7.3.1  # For testing
 nltk
-
+datasets
+transformers[torch]
 # Check if CUDA is available
 # python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 

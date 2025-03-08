@@ -51,7 +51,7 @@ def load_and_preprocess_data():
     sentiment_map = {1: 'Positive', 0: 'Neutral', -1: 'Negative'}
     df['sentiment_text'] = df['Sentiment'].map(sentiment_map)
     
-    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "preprocessed")
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "processed")
     output_path = os.path.join(output_dir, "processed_kagggle_dataset_for_training.csv")
     df.to_csv(output_path, index=False)
     print(f"Cleaned and processed data saved to: {output_path}")
