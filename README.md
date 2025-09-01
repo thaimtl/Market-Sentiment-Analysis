@@ -14,7 +14,7 @@ This is my deliverable project for co-curricular course MAIS202: Introduction to
 financial-sentiment-analysis/
 │
 ├── data/                          # Data directory
-│   ├── raw/                       # Original dataset files
+│   ├── raw/                       # Original dataset files (Inside raw is the financial dataset from
 │   └── processed/                 # Processed/cleaned data
 │
 ├── models/                        # Saved models directory
@@ -57,8 +57,8 @@ financial-sentiment-analysis/
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/financial-sentiment-analysis.git
-cd financial-sentiment-analysis
+git clone https://github.com/thaimtl/Market-Sentiment-Analysis.git
+cd codebase
 ```
 
 2. Create a virtual environment and activate it:
@@ -70,9 +70,9 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-3. Install required packages:
+3. Install required packages (This is going to take a while, so feel free to go grab some water/coffee) :
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Download and place the Kaggle Financial Sentiment Dataset in the `data/raw` directory as `data.csv`.
+4. Download and place any financial sentiment dataset you would like to use to train the model (in this case it is the [Kaggle Financial Sentiment Dataset](https://www.kaggle.com/datasets/sbhatti/financial-sentiment-analysis?resource=download) in the `data/raw` directory as `data.csv`.
