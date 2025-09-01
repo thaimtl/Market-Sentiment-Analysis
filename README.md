@@ -51,7 +51,6 @@ financial-sentiment-analysis/
 │
 ├── main.py                        # Main entry point
 ├── requirements.txt               # Project dependencies
-└── README.md                      # Project documentation 
 ```
 
 ## Installation
