@@ -75,4 +75,4 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Download and place any financial sentiment dataset you would like to use to train the model (in this case it is the [Kaggle Financial Sentiment Dataset](https://www.kaggle.com/datasets/sbhatti/financial-sentiment-analysis?resource=download) in the `data/raw` directory as `data.csv`.
+4. Download and place any financial sentiment dataset you would like to use to train the model (in this case it is the [Kaggle Financial Sentiment Dataset](https://www.kaggle.com/datasets/sbhatti/financial-sentiment-analysis?resource=download)) in the `data/raw` directory as `data.csv`.
