@@ -112,6 +112,12 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 # Verify GPU is detected
 python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 ```
+## API Configuration
+
+### Alpha Vantage API
+The project uses Alpha Vantage for fetching real-time financial news.
+- Get your free API key at: https://www.alphavantage.co/support/#api-key
+- Update the API key in .env file
 
 ## Usage
 
@@ -167,14 +173,6 @@ Commands:
 - Fetch recent news headlines automatically
 - Analyze sentiment for each news item
 - View aggregate sentiment statistics
-
-## API Configuration
-
-### Alpha Vantage API
-The project uses Alpha Vantage for fetching real-time financial news.
-- Default API key is included for testing
-- For production use, get your free API key at: https://www.alphavantage.co/support/#api-key
-- Update the API key in .env file
 
 ## Training Configuration
 
