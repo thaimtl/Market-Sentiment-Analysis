@@ -60,6 +60,7 @@ financial-sentiment-analysis/
 ### TODO 
 - Compare the fine-tuned model performance with the default one
 - Fine tune it on a different dataset to minimize the neutral label
+- Optimization and Improvement needed on fetching and sorting relevant headlines for a particular stock
   
 ### Prerequisites
 - Python 3.8 or higher
