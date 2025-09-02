@@ -57,7 +57,10 @@ financial-sentiment-analysis/
 ```
 
 ## Installation
-
+### TODO 
+- Compare the fine-tuned model performance with the default one
+- Fine tune it on a different dataset to minimize the neutral label
+  
 ### Prerequisites
 - Python 3.8 or higher
 - CUDA-compatible GPU (optional, for faster training)
