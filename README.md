@@ -169,7 +169,7 @@ Commands:
 The project uses Alpha Vantage for fetching real-time financial news.
 - Default API key is included for testing
 - For production use, get your free API key at: https://www.alphavantage.co/support/#api-key
-- Update the API key in `src/data/fetch_news.py`
+- Update the API key in .env file
 
 ## Training Configuration
 
