@@ -135,10 +135,11 @@ python main.py preprocess
 python main.py train
 
 # 4. Test the trained model
-python main.py test
+python main.py test (TO BE COMPLETED ...)
 
 # 5. Run web application with your trained model
-python main.py webapp
+cd src/app
+python main.py 
 ```
 
 ### Command Line Options
