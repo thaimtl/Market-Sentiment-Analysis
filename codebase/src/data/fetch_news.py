@@ -3,7 +3,7 @@ import requests
 from datetime import datetime, timedelta
 import os
 import traceback
-from preprocess import clean_text
+from src.data.preprocess import clean_text
 
 def fetch_stock_news_alphavantage(ticker, days=7, api_key='APRTD0XNPCP0J0YC'):
     """

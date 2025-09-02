@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinBERT Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FinBERT Sentiment Analysis</h1>
+            <p>Advanced financial sentiment analysis powered by AI</p>
+        </div>
+        
+        <!-- Text Analysis Section -->
+        <div class="card">
+            <h2 class="card-title">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Text Sentiment Analysis
+            </h2>
+            <div class="form-group">
+                <label class="form-label" for="text-input">Enter text to analyze</label>
+                <textarea 
+                    id="text-input" 
+                    class="form-input form-textarea" 
+                    placeholder="Enter financial text, news headlines, or any text you want to analyze..."
+                ></textarea>
+            </div>
+            <button class="btn" id="analyze-text-btn">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                Analyze Sentiment
+            </button>
+            <div id="text-results" class="results"></div>
+        </div>
+        
+        <!-- Stock News Analysis Section -->
+        <div class="card">
+            <h2 class="card-title">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                </svg>
+                Stock News Analysis
+            </h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="ticker-input">Stock Ticker</label>
+                    <input 
+                        type="text" 
+                        id="ticker-input" 
+                        class="form-input" 
+                        placeholder="e.g., AAPL, MSFT, TSLA" 
+                        style="text-transform: uppercase;"
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="days-input">Days of News</label>
+                    <input 
+                        type="number" 
+                        id="days-input" 
+                        class="form-input" 
+                        value="7" 
+                        min="1" 
+                        max="30"
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="headlines-input">Max Headlines</label>
+                    <input 
+                        type="number" 
+                        id="headlines-input" 
+                        class="form-input" 
+                        value="20" 
+                        min="5" 
+                        max="100"
+                    >
+                </div>
+            </div>
+            <button class="btn" id="analyze-stock-btn">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                Analyze Stock Sentiment
+            </button>
+            <div id="stock-results" class="results"></div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript modules in dependency order -->
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/analyzer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/state.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/events.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

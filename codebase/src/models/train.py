@@ -11,7 +11,7 @@ import pandas as pd
 
 # Add parent directory to path to import from src.data
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from data.preprocess import load_and_preprocess_data
+from src.data.preprocess import load_and_preprocess_data
 
 def compute_metrics(pred):
     """
@@ -246,7 +246,7 @@ class FinancialSentimentTrainer:
             num_train_epochs=num_epochs,
             per_device_train_batch_size=batch_size,
             per_device_eval_batch_size=batch_size,
-            evaluation_strategy="epoch",
+            eval_strategy="epoch",
             save_strategy="epoch",
             load_best_model_at_end=True,
             metric_for_best_model="eval_loss",  # Use loss for best model (this uses log loss/cross-entropy internally)
