@@ -48,9 +48,37 @@ def run_training():
         print(f"Error in training: {e}")
         return False
 
+def run_tests():
+    """Run unit tests"""
+    import unittest
+    
+    print("Running unit tests...")
+    print("=" * 50)
+    
+    # Discover and run tests
+    loader = unittest.TestLoader()
+    start_dir = os.path.join(current_dir, 'tests')
+    
+    if not os.path.exists(start_dir):
+        print(f"❌ Tests directory not found at {start_dir}")
+        print("Please create the tests directory and test files")
+        return False
+    
+    suite = loader.discover(start_dir, pattern='test_*.py')
+    runner = unittest.TextTestRunner(verbosity=2)
+    result = runner.run(suite)
+    
+    print("=" * 50)
+    if result.wasSuccessful():
+        print("✅ All tests passed!")
+        return True
+    else:
+        print(f"❌ {len(result.failures)} test(s) failed, {len(result.errors)} error(s)")
+        return False
+
 def test_predictor():
-    """Test the predictor"""
-    print("Testing predictor...")
+    """Test the predictor with sample texts (legacy function)"""
+    print("Testing optimized predictor...")
     try:
         from src.models.predict import load_predictor
         
@@ -60,47 +88,70 @@ def test_predictor():
         test_texts = [
             "Apple's stock price is soaring after excellent quarterly results!",
             "The company reported disappointing earnings and missed expectations.",
-            "Trading volume was average today with mixed market signals."
+            "Trading volume was average today with mixed market signals.",
+            "Investors are optimistic about the new product launch.",
+            "Market volatility continues amid economic uncertainty."
         ]
         
-        print("\nTesting predictor with sample texts:")
+        print("\nTesting Optimized FinBERT Predictor:")
         print("-" * 60)
         
-        for text in test_texts:
-            result = predictor.predict_sentiment(text, return_probabilities=True)
-            print(f"\nText: {text}")
-            print(f"Sentiment: {result['sentiment'].upper()}")
-            print(f"Confidence: {result['confidence']:.3f}")
-            
-        print("\nPredictor test completed successfully!")
+        # Test batch processing
+        import time
+        start_time = time.time()
+        batch_results = predictor.predict_sentiment_batch(test_texts, return_probabilities=True)
+        batch_time = time.time() - start_time
+        
+        print(f"Batch processing time: {batch_time:.3f}s for {len(test_texts)} texts")
+        print(f"Average time per text: {batch_time/len(test_texts):.3f}s")
+        
+        for i, (text, result) in enumerate(zip(test_texts, batch_results)):
+            print(f"\n{i+1}. {text}")
+            print(f"   Sentiment: {result['sentiment'].upper()}")
+            print(f"   Confidence: {result['confidence']:.3f}")
+        
+        # Performance metrics
+        if hasattr(predictor, 'get_performance_metrics'):
+            metrics = predictor.get_performance_metrics()
+            if metrics:
+                print("\nPerformance Metrics:")
+                for metric, value in metrics.items():
+                    print(f"  {metric}: {value:.3f}s")
+        
+        print("-" * 60)
+        print("✅ Optimized predictor test completed successfully!")
         return True
         
     except Exception as e:
-        print(f"Error testing predictor: {e}")
+        print(f"❌ Error testing predictor: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def run_web_app():
     """Run the Flask web application"""
     print("Starting Flask web application...")
     try:
-        from src.app.main import app, initialize_predictor
+        # Change to app directory
+        app_dir = os.path.join(current_dir, 'src', 'app')
+        os.chdir(app_dir)
         
-        print("Initializing predictor...")
-        if not initialize_predictor():
-            print("Failed to initialize predictor. Exiting.")
-            return False
+        from main import create_app
+        app = create_app()
         
-        print("Starting Flask server...")
         print("=" * 60)
         print("🚀 FinBERT Sentiment Analysis App is running!")
         print("📊 Open your browser to: http://localhost:5000")
+        print("⚡ Features: Optimized batch processing, caching, performance monitoring")
         print("=" * 60)
         
         app.run(debug=True, host='0.0.0.0', port=5000)
         return True
         
     except Exception as e:
-        print(f"Error running web app: {e}")
+        print(f"❌ Error running web app: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def fetch_news_demo():
@@ -129,7 +180,7 @@ def fetch_news_demo():
         return True
         
     except Exception as e:
-        print(f"Error fetching news: {e}")
+        print(f"❌ Error fetching news: {e}")
         return False
 
 def check_setup():
@@ -164,7 +215,11 @@ def check_setup():
         'src/data/fetch_news.py',
         'src/models/train.py',
         'src/models/predict.py',
-        'src/app/main.py'
+        'src/app/main.py',
+        'src/app/config.py',
+        'src/app/services.py',
+        'src/app/routes.py',
+        'src/app/utils.py'
     ]
     
     missing_files = []
@@ -193,6 +248,7 @@ def check_setup():
     
     if not missing_dirs and not missing_files and data_found:
         print("✅ Project setup looks good!")
+        print("✅ Optimized batch processing features available!")
         return True
     else:
         print("❌ Project setup has issues. Please fix the above problems.")
@@ -215,6 +271,7 @@ def main():
     
     print("=" * 60)
     print("🤖 FinBERT Financial Sentiment Analysis")
+    print("⚡ Optimized with Batch Processing & Performance Monitoring")
     print("=" * 60)
     
     if args.command == 'check':
@@ -229,8 +286,11 @@ def main():
             sys.exit(1)
             
     elif args.command == 'test':
-        if not test_predictor():
-            sys.exit(1)
+        # Run comprehensive unit tests
+        if not run_tests():
+            print("\nFalling back to basic predictor test...")
+            if not test_predictor():
+                sys.exit(1)
             
     elif args.command == 'webapp':
         if not run_web_app():

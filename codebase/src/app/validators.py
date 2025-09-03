@@ -1,4 +1,5 @@
 import re
+from typing import List
 
 class BaseValidator:
     """Base validator class"""
@@ -34,6 +35,40 @@ class TextAnalysisValidator(BaseValidator):
             self.errors.append('No text provided')
         elif len(self.text) > 10000:  # Reasonable limit
             self.errors.append('Text too long (max 10,000 characters)')
+
+class BatchAnalysisValidator(BaseValidator):
+    """Validator for batch text analysis requests"""
+    
+    def _validate(self):
+        self.texts = self.data.get('texts', [])
+        
+        if not isinstance(self.texts, list):
+            self.errors.append('Texts must be provided as a list')
+            return
+        
+        if not self.texts:
+            self.errors.append('No texts provided')
+            return
+        
+        if len(self.texts) > 100:  # Reasonable batch limit
+            self.errors.append('Too many texts (max 100 per batch)')
+            return
+        
+        # Validate each text
+        valid_texts = []
+        for i, text in enumerate(self.texts):
+            if not isinstance(text, str):
+                self.errors.append(f'Text at index {i} must be a string')
+                continue
+            
+            text = text.strip()
+            if len(text) > 10000:
+                self.errors.append(f'Text at index {i} too long (max 10,000 characters)')
+                continue
+            
+            valid_texts.append(text)
+        
+        self.texts = valid_texts
 
 class StockAnalysisValidator(BaseValidator):
     """Validator for stock analysis requests"""

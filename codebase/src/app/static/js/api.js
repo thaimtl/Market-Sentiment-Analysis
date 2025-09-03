@@ -33,11 +33,23 @@ const ApiService = {
         return this.makeRequest(CONFIG.API.ENDPOINTS.ANALYZE_TEXT, { text });
     },
 
+    async analyzeTextsBatch(texts) {
+        return this.makeRequest(CONFIG.API.ENDPOINTS.ANALYZE_TEXTS_BATCH, { texts });
+    },
+
     async analyzeStock(ticker, days, maxHeadlines) {
         return this.makeRequest(CONFIG.API.ENDPOINTS.ANALYZE_STOCK, {
             ticker: ticker.toUpperCase(),
             days: parseInt(days),
             max_headlines: parseInt(maxHeadlines)
         });
+    },
+
+    async getPerformanceMetrics() {
+        return this.makeRequest(CONFIG.API.ENDPOINTS.PERFORMANCE, {}, 'GET');
+    },
+
+    async clearCache() {
+        return this.makeRequest(CONFIG.API.ENDPOINTS.CLEAR_CACHE, {});
     }
 };

@@ -23,9 +23,47 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    background: var(--background);
     color: var(--text);
     line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    
+    /* Animated gradient background */
+    background: linear-gradient(-45deg, #667eea, #42a3a5, #667eea, #4f46e5, #7c3aed);
+    background-size: 400% 400%;
+    animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Content overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(248, 250, 252, 0.85);
+    backdrop-filter: blur(1px);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {

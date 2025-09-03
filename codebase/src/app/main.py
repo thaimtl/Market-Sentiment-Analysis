@@ -2,15 +2,13 @@ from flask import Flask
 from src.app.config import Config
 from src.app.routes import bp as main_bp
 from src.app.services import PredictorService
+import os
 
 def create_app():
     """Application factory pattern"""
     app = Flask(__name__, 
                 template_folder='templates',
                 static_folder='static')
-    
-    # Load configuration
-    app.config.from_object(Config)
     
     # Initialize services
     PredictorService.initialize()

@@ -34,10 +34,43 @@ const UIComponents = {
             return UIComponents.createEmptyState(data.message, requestedCount);
         }
 
-        return `
+        let html = `
             ${UIComponents.createSummaryGrid(data, requestedCount)}
+            ${UIComponents.createPerformanceMetrics(data.performance_metrics)}
             ${UIComponents.createSentimentDistribution(data)}
             ${UIComponents.createNewsList(data, requestedCount)}
+        `;
+        
+        return html;
+    },
+
+    createPerformanceMetrics: (performanceData) => {
+        if (!CONFIG.UI.SHOW_PERFORMANCE_METRICS || !performanceData) {
+            return '';
+        }
+
+        const efficiency = performanceData.efficiency || {};
+        
+        return `
+            <div class="card" style="margin-bottom: 1rem; background: #f8fafc;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                    ⚡ Performance Metrics
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; font-size: 0.8rem;">
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: var(--primary);">${efficiency.analysis_time_seconds?.toFixed(2) || 'N/A'}s</div>
+                        <div style="color: var(--text-secondary);">Analysis Time</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: var(--success);">${efficiency.throughput_headlines_per_second || 'N/A'}/s</div>
+                        <div style="color: var(--text-secondary);">Throughput</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-weight: 600; color: var(--warning);">${efficiency.used_batch_processing ? 'Yes' : 'No'}</div>
+                        <div style="color: var(--text-secondary);">Batch Processing</div>
+                    </div>
+                </div>
+            </div>
         `;
     },
 
