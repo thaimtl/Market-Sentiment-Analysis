@@ -124,6 +124,7 @@ The project uses Alpha Vantage for fetching real-time financial news.
 ### Quick Start (Using Pre-trained Model)
 ```bash
 # Run the web application directly
+cd codebase/src/app
 python main.py webapp
 
 # Open browser to: http://localhost:5000
