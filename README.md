@@ -10,10 +10,10 @@ This is my deliverable project for co-curricular course MAIS202: Introduction to
 - Web application for interactive analysis
 - GPU acceleration support for training
 
-## Project Back-end Structure
+## Project Back-end Structure with some important files
 
 ```
-financial-sentiment-analysis/
+codebase/
 │
 ├── data/                          # Data directory
 │   ├── raw/                       # Original dataset files
