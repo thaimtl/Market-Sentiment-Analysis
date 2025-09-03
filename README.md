@@ -10,10 +10,10 @@ This is my deliverable project for co-curricular course MAIS202: Introduction to
 - Web application for interactive analysis
 - GPU acceleration support for training
 
-## Project Back-end Structure
+## Project Back-end Structure with some important files
 
 ```
-financial-sentiment-analysis/
+codebase/
 │
 ├── data/                          # Data directory
 │   ├── raw/                       # Original dataset files
@@ -124,6 +124,7 @@ The project uses Alpha Vantage for fetching real-time financial news.
 ### Quick Start (Using Pre-trained Model)
 ```bash
 # Run the web application directly
+cd codebase/src/app
 python main.py webapp
 
 # Open browser to: http://localhost:5000
