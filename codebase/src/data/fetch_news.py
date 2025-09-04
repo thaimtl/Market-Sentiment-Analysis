@@ -4,8 +4,9 @@ from datetime import datetime, timedelta
 import os
 import traceback
 from src.data.preprocess import clean_text
+from src.app.config import Config
 
-def fetch_stock_news_alphavantage(ticker, days=7, api_key='APRTD0XNPCP0J0YC'):
+def fetch_stock_news_alphavantage(ticker, days=7, api_key=Config.ALPHA_VANTAGE_API_KEY):
     """
     Fetch news for a given stock ticker using Alpha Vantage API
     
@@ -15,7 +16,7 @@ def fetch_stock_news_alphavantage(ticker, days=7, api_key='APRTD0XNPCP0J0YC'):
         Stock ticker symbol (e.g., AAPL, MSFT)
     days : int, default=7
         Number of days to look back for news
-    api_key : str, default='APRTD0XNPCP0J0YC'
+    api_key : str - replace with your API KEY OBTAINED FROM ALPHA VANTAGE
         Alpha Vantage API key (free tier)
         
     Returns:
