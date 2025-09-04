@@ -1,4 +1,4 @@
-# Market-Sentiment-Analysis
+# [Market-Sentiment-Analysis](https://www.youtube.com/watch?v=iZehzuRDLEo)
 This is my deliverable project for co-curricular course MAIS202: Introduction to Machine Learning by McGill 
 
 ## Features
@@ -58,9 +58,9 @@ codebase/
 
 ## Installation
 ### TODO 
-- Compare the fine-tuned model performance with the default one
-- Fine tune it on a different dataset to minimize the neutral label
-- Optimization and Improvement needed on fetching and sorting relevant headlines for a particular stock
+- Compare the fine-tuned model performance with the default one (Done - The pre-trained output mostly neutral - It turns out that it was not as good as I thought, fine-tuned is a must)
+- Fine tune it on a different dataset to minimize the neutral label 
+- Optimization and Improvement needed on fetching and sorting relevant headlines for a particular stock 
   
 ### Prerequisites
 - Python 3.8 or higher
